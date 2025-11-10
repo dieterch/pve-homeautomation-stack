@@ -1,0 +1,420 @@
+{
+    "bridge": {
+        "name": "Homebridge 5EF7",
+        "username": "0E:6A:2E:2B:5E:F7",
+        "port": 51228,
+        "pin": "257-48-166",
+        "advertiser": "bonjour-hap"
+    },
+    "accessories": [
+        {
+            "name": "test",
+            "stateful": true,
+            "reverse": false,
+            "time": 1000,
+            "resettable": false,
+            "accessory": "DummySwitch"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "windowCovering",
+            "name": "Wohnzimmer Fenster Jalousie",
+            "topics": {
+                "getCurrentPosition": "somfy/shades/1/position",
+                "setTargetPosition": "somfy/shades/1/target/set",
+                "getTargetPosition": "somfy/shades/1/target",
+                "getPositionState": "somfy/shades/1/direction",
+                "setHoldPosition": "somfy/shades/1/target"
+            },
+            "positionStateValues": [
+                1,
+                -1,
+                0
+            ],
+            "minPosition": 0,
+            "maxPosition": 100
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "windowCovering",
+            "name": "Wohnzimmer Tür Jalousie",
+            "topics": {
+                "getCurrentPosition": "somfy/shades/2/position",
+                "setTargetPosition": "somfy/shades/2/target/set",
+                "getTargetPosition": "somfy/shades/2/target",
+                "getPositionState": "somfy/shades/2/direction",
+                "setHoldPosition": "somfy/shades/2/target"
+            },
+            "positionStateValues": [
+                1,
+                -1,
+                0
+            ],
+            "minPosition": 0,
+            "maxPosition": 100
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "windowCovering",
+            "name": "Schlafzimmer Tür Jalousie",
+            "topics": {
+                "getCurrentPosition": "somfy/shades/3/position",
+                "setTargetPosition": "somfy/shades/3/target/set",
+                "getTargetPosition": "somfy/shades/3/target",
+                "getPositionState": "somfy/shades/3/direction",
+                "setHoldPosition": "somfy/shades/3/target"
+            },
+            "positionStateValues": [
+                1,
+                -1,
+                0
+            ],
+            "minPosition": 0,
+            "maxPosition": 100
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "windowCovering",
+            "name": "Schlafzimmer Fenster Jalousie",
+            "topics": {
+                "getCurrentPosition": "somfy/shades/4/position",
+                "setTargetPosition": "somfy/shades/4/target/set",
+                "getTargetPosition": "somfy/shades/4/target",
+                "getPositionState": "somfy/shades/4/direction",
+                "setHoldPosition": "somfy/shades/4/target"
+            },
+            "positionStateValues": [
+                1,
+                -1,
+                0
+            ],
+            "minPosition": 0,
+            "maxPosition": 100
+        },
+        {
+            "type": "statelessProgrammableSwitch",
+            "name": "IKEA Schalter 1",
+            "caption": "IKEA Schalter 1",
+            "topics": {
+                "getSwitch": [
+                    {
+                        "topic": "zigbee2mqtt/IkeaSchalter1",
+                        "apply": "return JSON.parse(message).action;"
+                    }
+                ],
+                "getStatusLowBattery": {
+                    "topic": "zigbee2mqtt/IkeaSchalter1",
+                    "apply": "return (JSON.parse(message).battery < 20) ? 1 : 0;"
+                },
+                "getBatteryLevel": {
+                    "topic": "zigbee2mqtt/IkeaSchalter1",
+                    "apply": "return JSON.parse(message).battery;"
+                }
+            },
+            "accessory": "mqttthing",
+            "logMqtt": false,
+            "codec": "js/tradfri.js"
+        },
+        {
+            "type": "statelessProgrammableSwitch",
+            "name": "Kueche Remote",
+            "caption": "Kueche_Remote",
+            "topics": {
+                "getSwitch": [
+                    {
+                        "topic": "zigbee2mqtt/KuecheFunkSchalter",
+                        "apply": "return JSON.parse(message).action;"
+                    }
+                ],
+                "getStatusLowBattery": {
+                    "topic": "zigbee2mqtt/KuecheFunkSchalter",
+                    "apply": "if (JSON.parse(message).battery < 20) return 1; else return 0;"
+                },
+                "getBatteryLevel": {
+                    "topic": "zigbee2mqtt/KuecheFunkSchalter",
+                    "apply": "return JSON.parse(message).battery;"
+                }
+            },
+            "accessory": "mqttthing",
+            "logMqtt": false,
+            "codec": "js/hue.js"
+        },
+        {
+            "type": "statelessProgrammableSwitch",
+            "name": "Esstisch Remote",
+            "caption": "Esstisch_Remote",
+            "topics": {
+                "getSwitch": [
+                    {
+                        "topic": "zigbee2mqtt/EsstischFunkSchalter",
+                        "apply": "return JSON.parse(message).action;"
+                    }
+                ],
+                "getStatusLowBattery": {
+                    "topic": "zigbee2mqtt/EsstischFunkSchalter",
+                    "apply": "if (JSON.parse(message).battery < 20) return 1; else return 0;"
+                },
+                "getBatteryLevel": {
+                    "topic": "zigbee2mqtt/EsstischFunkSchalter",
+                    "apply": "return JSON.parse(message).battery;"
+                }
+            },
+            "accessory": "mqttthing",
+            "logMqtt": false,
+            "codec": "js/hue.js"
+        },
+        {
+            "type": "statelessProgrammableSwitch",
+            "name": "Couch Remote",
+            "caption": "Couch_Remote",
+            "topics": {
+                "getSwitch": [
+                    {
+                        "topic": "zigbee2mqtt/CouchFunkSchalter",
+                        "apply": "return JSON.parse(message).action;"
+                    }
+                ],
+                "getStatusLowBattery": {
+                    "topic": "zigbee2mqtt/CouchFunkSchalter",
+                    "apply": "if (JSON.parse(message).battery < 20) return 1; else return 0;"
+                },
+                "getBatteryLevel": {
+                    "topic": "zigbee2mqtt/CouchFunkSchalter",
+                    "apply": "return JSON.parse(message).battery;"
+                }
+            },
+            "accessory": "mqttthing",
+            "logMqtt": false,
+            "codec": "js/hue.js"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Wohnzimmer Blumenlicht",
+            "caption": "Wohnzimmer Blumenlicht",
+            "topics": {
+                "getOn": "shellies/shellyplug-s-040D25/relay/0",
+                "setOn": "shellies/shellyplug-s-040D25/relay/0/command"
+            },
+            "integerValue": "false",
+            "onValue": "on",
+            "offValue": "off"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Wohnzimmer Beocreate",
+            "caption": "Wohnzimmer Beocreate",
+            "topics": {
+                "getOn": "shellies/shellyplug-s-6A6374/relay/0",
+                "setOn": "shellies/shellyplug-s-6A6374/relay/0/command"
+            },
+            "integerValue": "false",
+            "onValue": "on",
+            "offValue": "off"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Gang Licht Schalter",
+            "caption": "Gang_Licht",
+            "topics": {
+                "getOn": "shellies/shelly1-5B2B93/relay/0",
+                "setOn": "shellies/shelly1-5B2B93/relay/0/command"
+            },
+            "integerValue": "false",
+            "onValue": "on",
+            "offValue": "off"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Wohnzimmer Decke Licht Schalter",
+            "caption": "Wohnzimmer_Deckenlicht",
+            "topics": {
+                "getOn": {
+                    "topic": "shelly1pmminig3-ecda3bc405dc/rpc",
+                    "apply": "return JSON.parse(message).params.on === true;"
+                },
+                "setOn": {
+                    "topic": "shelly1pmminig3-ecda3bc405dc/rpc",
+                    "apply": "return JSON.stringify({method: \"Switch.Set\", params: {id: 0,on: (message ? true : false)}})"
+                }
+            }
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Abstellkammer Licht Schalter",
+            "caption": "Abstellkammer_Deckenlicht",
+            "topics": {
+                "getOn": {
+                    "topic": "shelly1minig3-54320450e900/rpc",
+                    "apply": "return JSON.parse(message).params.on === true;"
+                },
+                "setOn": {
+                    "topic": "shelly1minig3-54320450e900/rpc",
+                    "apply": "return JSON.stringify({method: \"Switch.Set\", params: {id: 0,on: (message ? true : false)}})"
+                }
+            }
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Küche Unterschrank Licht Schalter",
+            "caption": "Küche_Unterschrank_Licht",
+            "topics": {
+                "getOn": {
+                    "topic": "shellyplus1-08b61fd93e1c/rpc",
+                    "apply": "return JSON.parse(message).params.on === true;"
+                },
+                "setOn": {
+                    "topic": "shellyplus1-08b61fd93e1c/rpc",
+                    "apply": "return JSON.stringify({method: \"Switch.Set\", params: {id: 0,on: (message ? true : false)}})"
+                }
+            }
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Küche Deckenlicht Schalter",
+            "caption": "Küche_Deckenlicht",
+            "topics": {
+                "getOn": {
+                    "topic": "shellyplus2pm-5443b23e53b8/rpc",
+                    "apply": "return (JSON.parse(message).params.on === true & JSON.parse(message).params.id === 0);"
+                },
+                "setOn": {
+                    "topic": "shellyplus2pm-5443b23e53b8/rpc",
+                    "apply": "return JSON.stringify({method: \"Switch.Set\", params: {id: 0,on: (message ? true : false)}})"
+                }
+            }
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Esstisch Licht Schalter",
+            "caption": "Esstisch_Licht",
+            "topics": {
+                "getOn": {
+                    "topic": "shellyplus2pm-5443b23e53b8/rpc",
+                    "apply": "return (JSON.parse(message).params.on === true & JSON.parse(message).params.id === 1);"
+                },
+                "setOn": {
+                    "topic": "shellyplus2pm-5443b23e53b8/rpc",
+                    "apply": "return JSON.stringify({method: \"Switch.Set\", params: {id: 1,on: (message ? true : false)}})"
+                }
+            }
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "switch",
+            "name": "Schlafzimmer Dieter Licht Schalter",
+            "caption": "Schlafzimmer_Dieter_Licht",
+            "topics": {
+                "getOn": {
+                    "topic": "shellyplus1-08b61fd7f0ac/rpc",
+                    "apply": "return JSON.parse(message).params.on === true;"
+                },
+                "setOn": {
+                    "topic": "shellyplus1-08b61fd7f0ac/rpc",
+                    "apply": "return JSON.stringify({method: \"Switch.Set\", params: {id: 0,on: (message ? true : false)}})"
+                }
+            }
+        },
+        {
+            "_": "_____ Beginn der Sektion Esstisch ____",
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Esstisch1",
+            "caption": "Esstisch1",
+            "topics": {
+                "getOn": "zigbee2mqtt/Esstisch1/setOn",
+                "setOn": "zigbee2mqtt/Esstisch1/setOn",
+                "getBrightness": "zigbee2mqtt/Esstisch1/getBrightness",
+                "setBrightness": "zigbee2mqtt/Esstisch1/setBrightness"
+            },
+            "integerValue": "false",
+            "onValue": "ON",
+            "offValue": "OFF",
+            "logMqtt": false,
+            "codec": "js/tradfri.js"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Esstisch2",
+            "caption": "Esstisch2",
+            "topics": {
+                "getOn": "zigbee2mqtt/Esstisch2/setOn",
+                "setOn": "zigbee2mqtt/Esstisch2/setOn",
+                "getBrightness": "zigbee2mqtt/Esstisch2/getBrightness",
+                "setBrightness": "zigbee2mqtt/Esstisch2/setBrightness",
+                "getColorTemperature": "zigbee2mqtt/Esstisch2/getColorTemperature",
+                "setColorTemperature": "zigbee2mqtt/Esstisch2/setColorTemperature"
+            },
+            "integerValue": "false",
+            "onValue": "ON",
+            "offValue": "OFF",
+            "logMqtt": false,
+            "codec": "js/tradfri.js"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Esstisch3",
+            "caption": "Esstisch3",
+            "topics": {
+                "getOn": "zigbee2mqtt/Esstisch3/setOn",
+                "setOn": "zigbee2mqtt/Esstisch3/setOn",
+                "getBrightness": "zigbee2mqtt/Esstisch3/getBrightness",
+                "setBrightness": "zigbee2mqtt/Esstisch3/setBrightness"
+            },
+            "integerValue": "false",
+            "onValue": "ON",
+            "offValue": "OFF",
+            "logMqtt": false,
+            "codec": "js/tradfri.js"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Esstisch4",
+            "topics": {
+                "getOn": "zigbee2mqtt/Esstisch4/setOn",
+                "setOn": "zigbee2mqtt/Esstisch4/setOn",
+                "getHSV": "zigbee2mqtt/Esstisch4/getHSV",
+                "setHSV": "zigbee2mqtt/Esstisch4/setHSV"
+            },
+            "logMqtt": false,
+            "onValue": "ON",
+            "offValue": "OFF",
+            "otherValueOff": true,
+            "codec": "js/tradfri.js"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Esstisch5",
+            "#url": "http://localhost:1883",
+            "topics": {
+                "getOn": "zigbee2mqtt/Esstisch5/setOn",
+                "setOn": "zigbee2mqtt/Esstisch5/setOn",
+                "getHSV": "zigbee2mqtt/Esstisch5/getHSV",
+                "setHSV": "zigbee2mqtt/Esstisch5/setHSV"
+            },
+            "logMqtt": false,
+            "onValue": "ON",
+            "offValue": "OFF",
+            "otherValueOff": true,
+            "codec": "js/tradfri.js"
+        }
+    ],
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 8581,
+            "platform": "config"
+        }
+    ]
+}

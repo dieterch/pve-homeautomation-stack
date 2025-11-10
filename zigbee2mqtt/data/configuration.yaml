@@ -1,0 +1,40 @@
+homeassistant:
+  enabled: false
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://192.168.15.48:1883
+  keepalive: 60
+  reject_unauthorized: false
+  version: 4
+  include_device_information: false
+frontend:
+  enabled: true
+  port: 8080
+  host: 0.0.0.0
+serial:
+  adapter: zstack
+  port: /dev/ttyUSB0
+availability:
+  enabled: true
+blocklist: []
+groups:
+  '1':
+    friendly_name: MyEsstisch
+version: 4
+devices:
+  '0x0017880108704513':
+    friendly_name: EsstischFunkSchalter
+  '0x0017880104f75e09':
+    friendly_name: KuecheFunkSchalter
+  '0x000b57fffec7f9e4':
+    friendly_name: Esstisch5
+  '0x90fd9ffffe64b23c':
+    friendly_name: Esstisch4
+  '0x90fd9ffffe04a728':
+    friendly_name: Esstisch2
+  '0x000b3cfffef795b3':
+    friendly_name: Esstisch1
+  '0x000d6ffffea91d0a':
+    friendly_name: Esstisch3
+  '0x00178801086b410b':
+    friendly_name: CouchFunkSchalter

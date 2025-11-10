@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@irusland/homebridge-mqttthing": "^1.1.51",
+    "homebridge": "1.11.1"
+  }
+}
