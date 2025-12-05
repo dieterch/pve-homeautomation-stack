@@ -117,19 +117,21 @@ function init( params ) {
             };
             if (["up_press","up_hold"].includes(msg.action)) {
                 // log("in decode_Switch for EsstischFunkSchalter "+JSON.stringify(info)+" action "+JSON.stringify(msg))
-                publish("zigbee2mqtt/Esstisch1/set",JSON.stringify({"brightness_step":40}));
+                publish("zigbee2mqtt/Esstisch/set",JSON.stringify({"brightness_step":40}));      //Gruppe Esstisch
+              /*  publish("zigbee2mqtt/Esstisch1/set",JSON.stringify({"brightness_step":40}));
                 publish("zigbee2mqtt/Esstisch2/set",JSON.stringify({"brightness_step":40}));
                 publish("zigbee2mqtt/Esstisch3/set",JSON.stringify({"brightness_step":40}));
                 publish("zigbee2mqtt/Esstisch4/set",JSON.stringify({"brightness_step":40}));
-                publish("zigbee2mqtt/Esstisch5/set",JSON.stringify({"brightness_step":40}));
+                publish("zigbee2mqtt/Esstisch5/set",JSON.stringify({"brightness_step":40})); */
             };
             if (["down_press","down_hold"].includes(msg.action)) {
                 // log("in decode_Switch for EsstischFunkSchalter "+JSON.stringify(info)+" action "+JSON.stringify(msg))
-                publish("zigbee2mqtt/Esstisch1/set",JSON.stringify({"brightness_step":-40}));
+                publish("zigbee2mqtt/Esstisch/set",JSON.stringify({"brightness_step":-40}));
+             /*   publish("zigbee2mqtt/Esstisch1/set",JSON.stringify({"brightness_step":-40}));
                 publish("zigbee2mqtt/Esstisch2/set",JSON.stringify({"brightness_step":-40}));
                 publish("zigbee2mqtt/Esstisch3/set",JSON.stringify({"brightness_step":-40}));
                 publish("zigbee2mqtt/Esstisch4/set",JSON.stringify({"brightness_step":-40}));
-                publish("zigbee2mqtt/Esstisch5/set",JSON.stringify({"brightness_step":-40}));
+                publish("zigbee2mqtt/Esstisch5/set",JSON.stringify({"brightness_step":-40})); */
             };
             if (["off_press","off_press_release","off_hold"].includes(msg.action)) {
                 publish("shellyplus2pm-5443b23e53b8/rpc",

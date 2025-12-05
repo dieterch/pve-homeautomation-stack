@@ -23,6 +23,10 @@ blocklist: []
 groups:
   '1':
     friendly_name: MyEsstisch
+  '3':
+    friendly_name: Esstisch
+    filtered_attributes:
+      - Brightness
 version: 4
 devices:
   '0x0017880108704513':
@@ -41,3 +45,6 @@ devices:
     friendly_name: KuecheFunkSchalter
   '0x00178801086b410b':
     friendly_name: CouchFunkSchalter
+  '0x694f69634762684a':
+    friendly_name: ShellyBLURemote
+    description: Shelly BLU Remote Control ZB
